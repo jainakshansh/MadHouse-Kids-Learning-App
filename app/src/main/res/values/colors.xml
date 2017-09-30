@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1967D2</color>
+    <color name="colorAccent">#009BE1</color>
+    <color name="vermillion">#F44336</color>
+    <color name="teal">#009688</color>
+    <color name="blueGray">#607D8B</color>
+</resources>
