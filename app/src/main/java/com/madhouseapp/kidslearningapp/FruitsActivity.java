@@ -101,13 +101,13 @@ public class FruitsActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Banana", R.drawable.banana));
         imageItemList.add(new ImageItem("Cherry", R.drawable.cherry));
         imageItemList.add(new ImageItem("Coconut", R.drawable.coconut));
-        imageItemList.add(new ImageItem("Dragon Fruit", R.drawable.dragon));
+        imageItemList.add(new ImageItem("Fig", R.drawable.dragon));
         imageItemList.add(new ImageItem("Grapes", R.drawable.grape));
         imageItemList.add(new ImageItem("Green Apple", R.drawable.greenapple));
         imageItemList.add(new ImageItem("Kiwi", R.drawable.kiwi));
         imageItemList.add(new ImageItem("Papaya", R.drawable.papaya));
         imageItemList.add(new ImageItem("Peach", R.drawable.peach));
-        imageItemList.add(new ImageItem("Pine", R.drawable.pine));
+        imageItemList.add(new ImageItem("Pineapple", R.drawable.pine));
         imageItemList.add(new ImageItem("Pomegranate", R.drawable.pomegranate));
         imageItemList.add(new ImageItem("Strawberry", R.drawable.strawberry));
         imageItemList.add(new ImageItem("Watermelon", R.drawable.watermelon));
