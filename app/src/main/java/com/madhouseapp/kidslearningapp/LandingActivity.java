@@ -1,5 +1,6 @@
 package com.madhouseapp.kidslearningapp;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.madhouseapp.kidslearningapp.Adapters.CategoryAdapter;
 import com.madhouseapp.kidslearningapp.Object.CategoryItem;
@@ -22,6 +24,8 @@ public class LandingActivity extends AppCompatActivity {
     private List<CategoryItem> categoryItemList;
     private CategoryAdapter categoryAdapter;
 
+    private TextView letsLearn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,10 @@ public class LandingActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_landing);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/jelly_crazies.ttf");
+        letsLearn = (TextView) findViewById(R.id.choose_landing);
+        letsLearn.setTypeface(typeface);
 
         categoryItemList = new ArrayList<>();
         initList();
@@ -40,17 +48,19 @@ public class LandingActivity extends AppCompatActivity {
         categoryRecycler.setLayoutManager(catLayMan);
         categoryRecycler.setItemAnimator(new DefaultItemAnimator());
         categoryRecycler.setAdapter(categoryAdapter);
-        categoryRecycler.smoothScrollToPosition((categoryItemList.size() / 2));
+        categoryRecycler.smoothScrollToPosition(1);
 
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(categoryRecycler);
     }
 
     private void initList() {
+        categoryItemList.add(new CategoryItem("", android.R.color.white));
         categoryItemList.add(new CategoryItem("Alphabets", R.drawable.alphabet_a));
         categoryItemList.add(new CategoryItem("Animals", R.drawable.tiger));
         categoryItemList.add(new CategoryItem("Fruits", R.drawable.grape));
         categoryItemList.add(new CategoryItem("Vegetables", R.drawable.cauli));
         categoryItemList.add(new CategoryItem("Vehicles", R.drawable.aeroplane));
+        categoryItemList.add(new CategoryItem("", android.R.color.white));
     }
 }

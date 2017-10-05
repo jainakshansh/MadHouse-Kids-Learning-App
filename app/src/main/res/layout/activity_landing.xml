@@ -16,8 +16,9 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="@string/what_would_you_like_to_learn_today"
+        android:textAllCaps="true"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -72,23 +72,29 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
         final int itemPos = position;
 
+        if (position == 0 || position == categoryItemList.size() - 1) {
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+            holder.cat_button.setText("");
+            holder.cat_button.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (itemPos) {
-                    case 0:
+                    case 1:
                         context.startActivity(new Intent(context.getApplicationContext(), AlphabetsActivity.class));
                         break;
-                    case 1:
+                    case 2:
                         context.startActivity(new Intent(context.getApplicationContext(), AnimalsActivity.class));
                         break;
-                    case 2:
+                    case 3:
                         context.startActivity(new Intent(context.getApplicationContext(), FruitsActivity.class));
                         break;
-                    case 3:
+                    case 4:
                         context.startActivity(new Intent(context.getApplicationContext(), VegetablesActivity.class));
                         break;
-                    case 4:
+                    case 5:
                         context.startActivity(new Intent(context.getApplicationContext(), VehiclesActivity.class));
                         break;
                 }
