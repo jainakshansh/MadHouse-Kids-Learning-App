@@ -19,6 +19,7 @@
 
     <LinearLayout
         android:id="@+id/parent_vegetables"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -29,31 +30,34 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_vegetables">
 
-        <ImageView
+        <Button
             android:id="@+id/previous_vegetables"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginEnd="24dp"
-            android:contentDescription="@string/select"
-            android:src="@drawable/left_button" />
+            android:background="@drawable/left_button"
+            android:elevation="10dp" />
 
-        <ImageView
+        <Button
             android:id="@+id/play_vegetables"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_gravity="center"
-            android:contentDescription="@string/select"
-            android:src="@drawable/center_button" />
+            android:background="@drawable/center_button"
+            android:elevation="10dp" />
 
-        <ImageView
+        <Button
             android:id="@+id/next_vegetables"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginStart="24dp"
-            android:contentDescription="@string/select"
-            android:src="@drawable/right_button" />
+            android:background="@drawable/right_button"
+            android:elevation="10dp" />
 
     </LinearLayout>
 

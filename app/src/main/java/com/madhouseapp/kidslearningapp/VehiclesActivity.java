@@ -10,7 +10,7 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
@@ -27,7 +27,7 @@ public class VehiclesActivity extends AppCompatActivity {
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
-    private ImageView previous, play, next;
+    private Button previous, play, next;
     private int counter = 0;
 
     @Override
@@ -49,9 +49,9 @@ public class VehiclesActivity extends AppCompatActivity {
         vehiclesRecycler.setItemAnimator(new DefaultItemAnimator());
         vehiclesRecycler.setAdapter(adapter);
 
-        previous = (ImageView) findViewById(R.id.previous_vehicles);
-        play = (ImageView) findViewById(R.id.play_vehicles);
-        next = (ImageView) findViewById(R.id.next_vehicles);
+        previous = (Button) findViewById(R.id.previous_vehicles);
+        play = (Button) findViewById(R.id.play_vehicles);
+        next = (Button) findViewById(R.id.next_vehicles);
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override

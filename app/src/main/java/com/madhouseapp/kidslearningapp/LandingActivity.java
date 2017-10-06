@@ -24,7 +24,7 @@ public class LandingActivity extends AppCompatActivity {
     private List<CategoryItem> categoryItemList;
     private CategoryAdapter categoryAdapter;
 
-    private TextView letsLearn;
+    private TextView learnToday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,9 @@ public class LandingActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_landing);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/jelly_crazies.ttf");
-        letsLearn = (TextView) findViewById(R.id.choose_landing);
-        letsLearn.setTypeface(typeface);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/poppins.ttf");
+        learnToday = (TextView) findViewById(R.id.choose_landing);
+        learnToday.setTypeface(typeface);
 
         categoryItemList = new ArrayList<>();
         initList();

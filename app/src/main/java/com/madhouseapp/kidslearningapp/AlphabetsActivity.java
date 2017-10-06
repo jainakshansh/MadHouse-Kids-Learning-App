@@ -10,7 +10,7 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Adapters.AlphabetAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
@@ -26,7 +26,7 @@ public class AlphabetsActivity extends AppCompatActivity {
     private AlphabetAdapter adapter;
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
-    private ImageView previous, play, next;
+    private Button previous, play, next;
     private int counter = 0;
 
     @Override
@@ -44,9 +44,9 @@ public class AlphabetsActivity extends AppCompatActivity {
         centerZoomLayoutManager = new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         alphabetRecycler = (RecyclerView) findViewById(R.id.recycler_alphabets);
-        previous = (ImageView) findViewById(R.id.previous_alphabets);
-        play = (ImageView) findViewById(R.id.play_alphabets);
-        next = (ImageView) findViewById(R.id.next_alphabets);
+        previous = (Button) findViewById(R.id.previous_alphabets);
+        play = (Button) findViewById(R.id.play_alphabets);
+        next = (Button) findViewById(R.id.next_alphabets);
 
         alphabetRecycler.setLayoutManager(centerZoomLayoutManager);
         alphabetRecycler.setItemAnimator(new DefaultItemAnimator());
@@ -77,7 +77,7 @@ public class AlphabetsActivity extends AppCompatActivity {
                 }
             }
         });
-
+x
         alphabetRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(alphabetRecycler);

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Kids Learning App</string>
-    <string name="what_would_you_like_to_learn_today">Lets Learn</string>
+    <string name="what_would_you_like_to_learn_today">What would you like to learn today?</string>
     <string name="select">Select</string>
 </resources>

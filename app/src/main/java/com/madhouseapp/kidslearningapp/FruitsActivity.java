@@ -10,7 +10,7 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
@@ -27,7 +27,7 @@ public class FruitsActivity extends AppCompatActivity {
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
-    private ImageView previous, play, next;
+    private Button previous, play, next;
     private int counter = 0;
 
     @Override
@@ -49,9 +49,9 @@ public class FruitsActivity extends AppCompatActivity {
         fruitsRecycler.setItemAnimator(new DefaultItemAnimator());
         fruitsRecycler.setAdapter(adapter);
 
-        previous = (ImageView) findViewById(R.id.previous_fruits);
-        play = (ImageView) findViewById(R.id.play_fruits);
-        next = (ImageView) findViewById(R.id.next_fruits);
+        previous = (Button) findViewById(R.id.previous_fruits);
+        play = (Button) findViewById(R.id.play_fruits);
+        next = (Button) findViewById(R.id.next_fruits);
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override

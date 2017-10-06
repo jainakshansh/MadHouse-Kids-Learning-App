@@ -100,6 +100,29 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 }
             }
         });
+
+        holder.cat_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (itemPos) {
+                    case 1:
+                        context.startActivity(new Intent(context.getApplicationContext(), AlphabetsActivity.class));
+                        break;
+                    case 2:
+                        context.startActivity(new Intent(context.getApplicationContext(), AnimalsActivity.class));
+                        break;
+                    case 3:
+                        context.startActivity(new Intent(context.getApplicationContext(), FruitsActivity.class));
+                        break;
+                    case 4:
+                        context.startActivity(new Intent(context.getApplicationContext(), VegetablesActivity.class));
+                        break;
+                    case 5:
+                        context.startActivity(new Intent(context.getApplicationContext(), VehiclesActivity.class));
+                        break;
+                }
+            }
+        });
     }
 
     @Override
