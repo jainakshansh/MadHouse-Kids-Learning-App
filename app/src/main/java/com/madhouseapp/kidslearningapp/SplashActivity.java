@@ -27,18 +27,34 @@ public class SplashActivity extends AppCompatActivity {
 
         madhouseLogo = (ImageView) findViewById(R.id.splash_logo);
 
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        animation.reset();
-        madhouseLogo.clearAnimation();
-        madhouseLogo.startAnimation(animation);
-
         Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+                fadeIn.reset();
+                madhouseLogo.clearAnimation();
+                madhouseLogo.startAnimation(fadeIn);
+            }
+        }, 0);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Animation translate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate);
+                translate.reset();
+                madhouseLogo.clearAnimation();
+                madhouseLogo.startAnimation(translate);
+            }
+        }, 0);
+
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 startActivity(new Intent(getApplicationContext(), LandingActivity.class));
                 finish();
             }
-        }, 1800);
+        }, 2000);
     }
 }
