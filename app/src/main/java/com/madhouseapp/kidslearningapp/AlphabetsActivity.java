@@ -77,7 +77,7 @@ public class AlphabetsActivity extends AppCompatActivity {
                 }
             }
         });
-x
+
         alphabetRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(alphabetRecycler);

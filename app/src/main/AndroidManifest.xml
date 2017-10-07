@@ -9,18 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LandingActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlphabetsActivity" />
-        <activity android:name=".AnimalsActivity" />
-        <activity android:name=".FruitsActivity" />
-        <activity android:name=".VegetablesActivity" />
-        <activity android:name=".VehiclesActivity"></activity>
+        <activity android:name=".LandingActivity" />
+        <activity
+            android:name=".AlphabetsActivity"
+            android:parentActivityName=".LandingActivity" />
+        <activity
+            android:name=".AnimalsActivity"
+            android:parentActivityName=".LandingActivity" />
+        <activity
+            android:name=".FruitsActivity"
+            android:parentActivityName=".LandingActivity" />
+        <activity
+            android:name=".VegetablesActivity"
+            android:parentActivityName=".LandingActivity" />
+        <activity
+            android:name=".VehiclesActivity"
+            android:parentActivityName=".LandingActivity" />
     </application>
 
 </manifest>

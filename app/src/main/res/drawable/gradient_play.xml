@@ -7,9 +7,9 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
             <gradient
                 android:angle="90"
-                android:centerColor="#892122f"
-                android:endColor="#892122f"
-                android:startColor="#892122f" />
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:startColor="@android:color/transparent" />
         </shape>
     </item>
 </layer-list>
