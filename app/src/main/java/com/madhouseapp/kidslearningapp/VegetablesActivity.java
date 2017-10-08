@@ -1,5 +1,6 @@
 package com.madhouseapp.kidslearningapp;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -30,6 +31,9 @@ public class VegetablesActivity extends AppCompatActivity {
     private Button previous, play, next;
     private int counter = 0;
 
+    private MediaPlayer mediaPlayer;
+    private int[] sounds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,12 @@ public class VegetablesActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_vegetables);
+
+        sounds = new int[]{R.raw.artichoke, R.raw.asparagus, R.raw.beans, R.raw.beetroot, R.raw.blue_cabbage, R.raw.broccoli,
+                R.raw.brussel_sprouts, R.raw.carrot, R.raw.cauliflower, R.raw.celery, R.raw.chili_peppers, R.raw.chinese_cabbage,
+                R.raw.corn, R.raw.cucumbers, R.raw.dil, R.raw.eggplant, R.raw.garlic, R.raw.green_cabbage, R.raw.lemon, R.raw.lettuce,
+                R.raw.onion, R.raw.parsley, R.raw.peppers, R.raw.potatoe, R.raw.radish, R.raw.red_cabbage, R.raw.squash,
+                R.raw.tomatoe, R.raw.zuchinni};
 
         imageItemList = new ArrayList<>();
         initList();
@@ -57,12 +67,6 @@ public class VegetablesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter--;
-                /*
-                if (counter == 0) {
-                    counter = imageItemList.size() - 2;
-                    vegetablesRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter < 0) {
                     counter = imageItemList.size() - 1;
                     vegetablesRecycler.scrollToPosition(counter);
@@ -76,12 +80,6 @@ public class VegetablesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter++;
-                /*
-                if (counter == imageItemList.size() - 2) {
-                    counter = 1;
-                    vegetablesRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter > imageItemList.size() - 1) {
                     counter = 0;
                     vegetablesRecycler.scrollToPosition(counter);
@@ -94,10 +92,20 @@ public class VegetablesActivity extends AppCompatActivity {
         vegetablesRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(vegetablesRecycler);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                }
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer.start();
+            }
+        });
     }
 
     private void initList() {
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
         imageItemList.add(new ImageItem("Artichokes", R.drawable.artichokes));
         imageItemList.add(new ImageItem("Asparagus", R.drawable.asparagus));
         imageItemList.add(new ImageItem("Beans & Peas", R.drawable.beansandpeas));
@@ -119,7 +127,7 @@ public class VegetablesActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Lemon", R.drawable.lemon));
         imageItemList.add(new ImageItem("Lettuce", R.drawable.lettuce));
         imageItemList.add(new ImageItem("Onions", R.drawable.onions));
-        imageItemList.add(new ImageItem("Parseley", R.drawable.parseley));
+        imageItemList.add(new ImageItem("Parsley", R.drawable.parseley));
         imageItemList.add(new ImageItem("Peppers", R.drawable.peppers));
         imageItemList.add(new ImageItem("Potatoes", R.drawable.potatoes));
         imageItemList.add(new ImageItem("Radish", R.drawable.radish));
@@ -127,7 +135,6 @@ public class VegetablesActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Squashes", R.drawable.squashes));
         imageItemList.add(new ImageItem("Tomatoes", R.drawable.tomatoes));
         imageItemList.add(new ImageItem("Zuccini", R.drawable.zuccini));
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
     }
 
     @Override

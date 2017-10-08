@@ -1,5 +1,6 @@
 package com.madhouseapp.kidslearningapp;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -30,6 +31,9 @@ public class VehiclesActivity extends AppCompatActivity {
     private Button previous, play, next;
     private int counter = 0;
 
+    private MediaPlayer mediaPlayer;
+    private int[] sounds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,9 @@ public class VehiclesActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_vehicles);
+
+        sounds = new int[]{R.raw.aeroplane, R.raw.autorickshaw, R.raw.cab, R.raw.camping_car, R.raw.car, R.raw.caravan, R.raw.cargotruck,
+                R.raw.dliveryvan, R.raw.hotairbaloon, R.raw.icecreamtruck, R.raw.motorcycle, R.raw.scooter, R.raw.ship, R.raw.speedboat, R.raw.truck};
 
         imageItemList = new ArrayList<>();
         initList();
@@ -57,12 +64,6 @@ public class VehiclesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter--;
-                /*
-                if (counter == 0) {
-                    counter = imageItemList.size() - 2;
-                    vehiclesRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter < 0) {
                     counter = imageItemList.size() - 1;
                     vehiclesRecycler.scrollToPosition(counter);
@@ -76,12 +77,6 @@ public class VehiclesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter++;
-                /*
-                if (counter == imageItemList.size() - 2) {
-                    counter = 1;
-                    vehiclesRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter > imageItemList.size() - 1) {
                     counter = 0;
                     vehiclesRecycler.scrollToPosition(counter);
@@ -94,10 +89,20 @@ public class VehiclesActivity extends AppCompatActivity {
         vehiclesRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(vehiclesRecycler);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                }
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer.start();
+            }
+        });
     }
 
     private void initList() {
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
         imageItemList.add(new ImageItem("Aeroplane", R.drawable.aeroplane));
         imageItemList.add(new ImageItem("Auto Rickshaw", R.drawable.auto));
         imageItemList.add(new ImageItem("Cab", R.drawable.cab));
@@ -113,7 +118,6 @@ public class VehiclesActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Ship", R.drawable.ship));
         imageItemList.add(new ImageItem("Speed Boat", R.drawable.speedboat));
         imageItemList.add(new ImageItem("Truck", R.drawable.truck));
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
     }
 
     @Override

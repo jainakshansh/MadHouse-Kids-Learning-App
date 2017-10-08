@@ -48,19 +48,16 @@ public class LandingActivity extends AppCompatActivity {
         categoryRecycler.setLayoutManager(catLayMan);
         categoryRecycler.setItemAnimator(new DefaultItemAnimator());
         categoryRecycler.setAdapter(categoryAdapter);
-        categoryRecycler.smoothScrollToPosition(1);
 
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(categoryRecycler);
     }
 
     private void initList() {
-        categoryItemList.add(new CategoryItem("", android.R.color.white));
         categoryItemList.add(new CategoryItem("Alphabets", R.drawable.alphabet_a));
         categoryItemList.add(new CategoryItem("Animals", R.drawable.tiger));
         categoryItemList.add(new CategoryItem("Fruits", R.drawable.grape));
         categoryItemList.add(new CategoryItem("Vegetables", R.drawable.cauli));
         categoryItemList.add(new CategoryItem("Vehicles", R.drawable.aeroplane));
-        categoryItemList.add(new CategoryItem("", android.R.color.white));
     }
 }

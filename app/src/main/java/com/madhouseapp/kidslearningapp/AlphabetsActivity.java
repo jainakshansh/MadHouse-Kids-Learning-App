@@ -11,6 +11,7 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Adapters.AlphabetAdapter;
@@ -32,6 +33,7 @@ public class AlphabetsActivity extends AppCompatActivity {
 
     private int[] sounds;
     private MediaPlayer mediaPlayer;
+    private Animation zoomIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

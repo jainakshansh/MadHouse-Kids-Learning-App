@@ -1,5 +1,6 @@
 package com.madhouseapp.kidslearningapp;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -30,14 +31,20 @@ public class FruitsActivity extends AppCompatActivity {
     private Button previous, play, next;
     private int counter = 0;
 
+    private MediaPlayer mediaPlayer;
+    private int[] sounds;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Setting up the activity for full screen mode
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_fruits);
+
+        sounds = new int[]{R.raw.banana, R.raw.cherry, R.raw.coconut, R.raw.fig, R.raw.grape, R.raw.green_apple, R.raw.kiwi,
+                R.raw.papaya, R.raw.peach, R.raw.pineapple, R.raw.pomegranate, R.raw.strawberry, R.raw.watermelon};
 
         imageItemList = new ArrayList<>();
         initList();
@@ -57,12 +64,6 @@ public class FruitsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter--;
-                /*
-                if (counter == 0) {
-                    counter = imageItemList.size() - 2;
-                    fruitsRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter < 0) {
                     counter = imageItemList.size() - 1;
                     fruitsRecycler.scrollToPosition(counter);
@@ -76,12 +77,6 @@ public class FruitsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter++;
-                /*
-                if (counter == imageItemList.size() - 2) {
-                    counter = 1;
-                    fruitsRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter > imageItemList.size() - 1) {
                     counter = 0;
                     fruitsRecycler.scrollToPosition(counter);
@@ -94,10 +89,20 @@ public class FruitsActivity extends AppCompatActivity {
         fruitsRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(fruitsRecycler);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                }
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer.start();
+            }
+        });
     }
 
     private void initList() {
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
         imageItemList.add(new ImageItem("Banana", R.drawable.banana));
         imageItemList.add(new ImageItem("Cherry", R.drawable.cherry));
         imageItemList.add(new ImageItem("Coconut", R.drawable.coconut));
@@ -111,7 +116,6 @@ public class FruitsActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Pomegranate", R.drawable.pomegranate));
         imageItemList.add(new ImageItem("Strawberry", R.drawable.strawberry));
         imageItemList.add(new ImageItem("Watermelon", R.drawable.watermelon));
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
     }
 
     @Override

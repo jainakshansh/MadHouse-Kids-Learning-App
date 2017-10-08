@@ -1,5 +1,6 @@
 package com.madhouseapp.kidslearningapp;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -30,6 +31,9 @@ public class AnimalsActivity extends AppCompatActivity {
     private Button previous, play, next;
     private int counter = 0;
 
+    private MediaPlayer mediaPlayer;
+    private int[] sounds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,9 @@ public class AnimalsActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_animals);
+
+        sounds = new int[]{R.raw.alligator, R.raw.bear, R.raw.elephant, R.raw.lion, R.raw.monkey, R.raw.panda, R.raw.rabbit,
+                R.raw.snake, R.raw.squirrel, R.raw.tiger, R.raw.zebra};
 
         imageItemList = new ArrayList<>();
         initList();
@@ -57,12 +64,6 @@ public class AnimalsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter--;
-                /*
-                if (counter == 0) {
-                    counter = imageItemList.size() - 2;
-                    animalRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter < 0) {
                     counter = imageItemList.size() - 1;
                     animalRecycler.scrollToPosition(counter);
@@ -76,12 +77,6 @@ public class AnimalsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter++;
-                /*
-                if (counter == imageItemList.size() - 2) {
-                    counter = 1;
-                    animalRecycler.scrollToPosition(counter);
-                }
-                */
                 if (counter > imageItemList.size() - 1) {
                     counter = 0;
                     animalRecycler.scrollToPosition(counter);
@@ -94,10 +89,20 @@ public class AnimalsActivity extends AppCompatActivity {
         animalRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(animalRecycler);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                }
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer.start();
+            }
+        });
     }
 
     private void initList() {
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
         imageItemList.add(new ImageItem("Alligator", R.drawable.alligator));
         imageItemList.add(new ImageItem("Bear", R.drawable.bear));
         imageItemList.add(new ImageItem("Elephant", R.drawable.elephant));
@@ -109,7 +114,6 @@ public class AnimalsActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Squirrel", R.drawable.squirrel));
         imageItemList.add(new ImageItem("Tiger", R.drawable.tiger));
         imageItemList.add(new ImageItem("Zebra", R.drawable.zebra));
-        //imageItemList.add(new ImageItem("", android.R.color.transparent));
     }
 
     @Override
