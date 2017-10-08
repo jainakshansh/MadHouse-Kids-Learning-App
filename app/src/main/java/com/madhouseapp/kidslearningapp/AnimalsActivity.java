@@ -63,6 +63,12 @@ public class AnimalsActivity extends AppCompatActivity {
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != imageItemList.size()-2) {
+                    counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
+                } else {
+                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition()+1;
+
+                }
                 counter--;
                 if (counter < 0) {
                     counter = imageItemList.size() - 1;
@@ -76,6 +82,7 @@ public class AnimalsActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter++;
                 if (counter > imageItemList.size() - 1) {
                     counter = 0;
@@ -93,6 +100,7 @@ public class AnimalsActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }

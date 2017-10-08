@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
@@ -59,10 +60,15 @@ public class VehiclesActivity extends AppCompatActivity {
         previous = (Button) findViewById(R.id.previous_vehicles);
         play = (Button) findViewById(R.id.play_vehicles);
         next = (Button) findViewById(R.id.next_vehicles);
-
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != imageItemList.size()-2) {
+                    counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
+                } else {
+                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition()+1;
+
+                }
                 counter--;
                 if (counter < 0) {
                     counter = imageItemList.size() - 1;
@@ -76,6 +82,7 @@ public class VehiclesActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter++;
                 if (counter > imageItemList.size() - 1) {
                     counter = 0;
@@ -93,6 +100,7 @@ public class VehiclesActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
