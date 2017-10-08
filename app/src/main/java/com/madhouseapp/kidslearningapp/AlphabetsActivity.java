@@ -1,5 +1,6 @@
 package com.madhouseapp.kidslearningapp;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -29,6 +30,9 @@ public class AlphabetsActivity extends AppCompatActivity {
     private Button previous, play, next;
     private int counter = 0;
 
+    private int[] sounds;
+    private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,10 @@ public class AlphabetsActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_alphabets);
+
+        sounds = new int[]{R.raw.a, R.raw.b, R.raw.c, R.raw.d, R.raw.e, R.raw.f, R.raw.g, R.raw.h, R.raw.i, R.raw.j, R.raw.k,
+                R.raw.l, R.raw.m, R.raw.n, R.raw.o, R.raw.p, R.raw.q, R.raw.r, R.raw.s, R.raw.t, R.raw.u, R.raw.v, R.raw.w,
+                R.raw.x, R.raw.y, R.raw.z};
 
         alphabetsList = new ArrayList<>();
         initList();
@@ -81,6 +89,17 @@ public class AlphabetsActivity extends AppCompatActivity {
         alphabetRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(alphabetRecycler);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                }
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer.start();
+            }
+        });
     }
 
     private void initList() {
