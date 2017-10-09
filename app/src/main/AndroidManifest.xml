@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.madhouseapp.kidslearningapp">
+          package="com.madhouseapp.kidslearningapp">
 
     <application
         android:allowBackup="true"
@@ -11,26 +11,31 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".LandingActivity" />
+        <activity android:name=".LandingActivity"/>
         <activity
             android:name=".AlphabetsActivity"
-            android:parentActivityName=".LandingActivity" />
+            android:parentActivityName=".LandingActivity"/>
         <activity
             android:name=".AnimalsActivity"
-            android:parentActivityName=".LandingActivity" />
+            android:parentActivityName=".LandingActivity"/>
         <activity
             android:name=".FruitsActivity"
-            android:parentActivityName=".LandingActivity" />
+            android:parentActivityName=".LandingActivity"/>
         <activity
             android:name=".VegetablesActivity"
-            android:parentActivityName=".LandingActivity" />
+            android:parentActivityName=".LandingActivity"/>
         <activity
             android:name=".VehiclesActivity"
-            android:parentActivityName=".LandingActivity" />
+            android:parentActivityName=".LandingActivity"/>
+        <activity android:name=".ShapesActivity">
+        </activity>
+        <activity android:name=".ColorsActivity">
+        </activity>
     </application>
 
 </manifest>
