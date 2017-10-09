@@ -45,6 +45,10 @@ public class ObjectsActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_objects);
 
+        sounds = new int[]{R.raw.air_conditioner, R.raw.briefcase, R.raw.bucket, R.raw.clock, R.raw.cricket_bat, R.raw.cricket_ball,
+                R.raw.chair, R.raw.pencil, R.raw.fan, R.raw.ladder, R.raw.laptop, R.raw.pen, R.raw.scissor, R.raw.smartphone,
+                R.raw.toothbrush, R.raw.uchiwa};
+
         imageItemList = new ArrayList<>();
         initList();
         adapter = new ImageAdapter(this, imageItemList);
@@ -127,7 +131,7 @@ public class ObjectsActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Laptop", R.drawable.laptop));
         imageItemList.add(new ImageItem("Pen", R.drawable.pen));
         imageItemList.add(new ImageItem("Scissors", R.drawable.scissors));
-        imageItemList.add(new ImageItem("Smartphone", R.drawable.smartphone));
+        imageItemList.add(new ImageItem("SmartPhone", R.drawable.smartphone));
         imageItemList.add(new ImageItem("Toothbrush", R.drawable.toothbrush));
         imageItemList.add(new ImageItem("Uchiwa", R.drawable.uchiwa));
     }
