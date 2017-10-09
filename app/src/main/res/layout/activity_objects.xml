@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_pattern"
-    tools:context=".VegetablesActivity">
+    tools:context="com.madhouseapp.kidslearningapp.ObjectsActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_shapes"
+        android:id="@+id/recycler_objects"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/parent_shapes"
+        app:layout_constraintBottom_toTopOf="@+id/parent_objects"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/parent_shapes"
+        android:id="@+id/parent_objects"
         style="?android:attr/buttonBarStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,10 +28,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_shapes">
+        app:layout_constraintTop_toBottomOf="@+id/recycler_objects">
 
         <Button
-            android:id="@+id/previous_shapes"
+            android:id="@+id/previous_objects"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -40,7 +40,7 @@
             android:background="@drawable/left_button" />
 
         <Button
-            android:id="@+id/play_shapes"
+            android:id="@+id/play_objects"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="125dp"
             android:layout_height="125dp"
@@ -48,7 +48,7 @@
             android:background="@drawable/center_button" />
 
         <Button
-            android:id="@+id/next_shapes"
+            android:id="@+id/next_objects"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="75dp"
             android:layout_height="75dp"

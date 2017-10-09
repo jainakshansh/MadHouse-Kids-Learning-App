@@ -20,8 +20,9 @@ import com.madhouseapp.kidslearningapp.Object.ImageItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShapesActivity extends AppCompatActivity {
-    private RecyclerView shapesRecycler;
+public class ObjectsActivity extends AppCompatActivity {
+
+    private RecyclerView objectRecycler;
     private List<ImageItem> imageItemList;
     private ImageAdapter adapter;
 
@@ -40,24 +41,21 @@ public class ShapesActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_shapes);
-
-        sounds = new int[]{R.raw.circle, R.raw.triangle, R.raw.oval, R.raw.square, R.raw.rectangle, R.raw.hexagon,
-                R.raw.pentagon, R.raw.diamond, R.raw.cylinder, R.raw.cube, R.raw.pyramid, R.raw.cone};
+        setContentView(R.layout.activity_objects);
 
         imageItemList = new ArrayList<>();
         initList();
         adapter = new ImageAdapter(this, imageItemList);
 
-        shapesRecycler = (RecyclerView) findViewById(R.id.recycler_shapes);
+        objectRecycler = (RecyclerView) findViewById(R.id.recycler_objects);
         centerZoomLayoutManager = new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        shapesRecycler.setLayoutManager(centerZoomLayoutManager);
-        shapesRecycler.setItemAnimator(new DefaultItemAnimator());
-        shapesRecycler.setAdapter(adapter);
+        objectRecycler.setLayoutManager(centerZoomLayoutManager);
+        objectRecycler.setItemAnimator(new DefaultItemAnimator());
+        objectRecycler.setAdapter(adapter);
 
-        previous = (Button) findViewById(R.id.previous_shapes);
-        play = (Button) findViewById(R.id.play_shapes);
-        next = (Button) findViewById(R.id.next_shapes);
+        previous = (Button) findViewById(R.id.previous_objects);
+        play = (Button) findViewById(R.id.play_objects);
+        next = (Button) findViewById(R.id.next_objects);
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +69,9 @@ public class ShapesActivity extends AppCompatActivity {
                 counter--;
                 if (counter < 0) {
                     counter = imageItemList.size() - 1;
-                    shapesRecycler.scrollToPosition(counter);
+                    objectRecycler.scrollToPosition(counter);
                 } else {
-                    shapesRecycler.smoothScrollToPosition(counter);
+                    objectRecycler.smoothScrollToPosition(counter);
                 }
             }
         });
@@ -85,16 +83,16 @@ public class ShapesActivity extends AppCompatActivity {
                 counter++;
                 if (counter > imageItemList.size() - 1) {
                     counter = 0;
-                    shapesRecycler.scrollToPosition(counter);
+                    objectRecycler.scrollToPosition(counter);
                 } else {
-                    shapesRecycler.smoothScrollToPosition(counter);
+                    objectRecycler.smoothScrollToPosition(counter);
                 }
             }
         });
 
-        shapesRecycler.smoothScrollToPosition(counter);
+        objectRecycler.smoothScrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
-        snapHelper.attachToRecyclerView(shapesRecycler);
+        snapHelper.attachToRecyclerView(objectRecycler);
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,18 +108,22 @@ public class ShapesActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        imageItemList.add(new ImageItem("Circle", R.drawable.circle));
-        imageItemList.add(new ImageItem("Triangle", R.drawable.triangle));
-        imageItemList.add(new ImageItem("Oval", R.drawable.oval));
-        imageItemList.add(new ImageItem("Square", R.drawable.square));
-        imageItemList.add(new ImageItem("Rectangle", R.drawable.rectangle));
-        imageItemList.add(new ImageItem("Hexagon", R.drawable.hexagon));
-        imageItemList.add(new ImageItem("Pentagon", R.drawable.pentagon));
-        imageItemList.add(new ImageItem("Diamond", R.drawable.diamond));
-        imageItemList.add(new ImageItem("Cylinder", R.drawable.cylinder));
-        imageItemList.add(new ImageItem("Cube", R.drawable.cube));
-        imageItemList.add(new ImageItem("Pyramid", R.drawable.pyramid));
-        imageItemList.add(new ImageItem("Cone", R.drawable.cone));
+        imageItemList.add(new ImageItem("Air Conditioner", R.drawable.air_conditioner));
+        imageItemList.add(new ImageItem("Briefcase", R.drawable.briefcase));
+        imageItemList.add(new ImageItem("Bucket", R.drawable.bucket));
+        imageItemList.add(new ImageItem("Clock", R.drawable.clock));
+        imageItemList.add(new ImageItem("Cricket Bat", R.drawable.cricket_bat));
+        imageItemList.add(new ImageItem("Cricket Ball", R.drawable.cricket));
+        imageItemList.add(new ImageItem("Chair", R.drawable.desk_chair));
+        imageItemList.add(new ImageItem("Pencil", R.drawable.edit));
+        imageItemList.add(new ImageItem("Fan", R.drawable.fan));
+        imageItemList.add(new ImageItem("Ladder", R.drawable.ladder));
+        imageItemList.add(new ImageItem("Laptop", R.drawable.laptop));
+        imageItemList.add(new ImageItem("Pen", R.drawable.pen));
+        imageItemList.add(new ImageItem("Scissors", R.drawable.scissors));
+        imageItemList.add(new ImageItem("Smartphone", R.drawable.smartphone));
+        imageItemList.add(new ImageItem("Toothbrush", R.drawable.toothbrush));
+        imageItemList.add(new ImageItem("Uchiwa", R.drawable.uchiwa));
     }
 
     @Override

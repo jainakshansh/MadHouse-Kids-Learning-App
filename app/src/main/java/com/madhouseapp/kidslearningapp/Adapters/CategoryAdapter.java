@@ -17,6 +17,7 @@ import com.madhouseapp.kidslearningapp.AnimalsActivity;
 import com.madhouseapp.kidslearningapp.ColorsActivity;
 import com.madhouseapp.kidslearningapp.FruitsActivity;
 import com.madhouseapp.kidslearningapp.Object.CategoryItem;
+import com.madhouseapp.kidslearningapp.ObjectsActivity;
 import com.madhouseapp.kidslearningapp.R;
 import com.madhouseapp.kidslearningapp.ShapesActivity;
 import com.madhouseapp.kidslearningapp.VegetablesActivity;
@@ -99,6 +100,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                     case 6:
                         context.startActivity(new Intent(context.getApplicationContext(), ColorsActivity.class));
                         break;
+                    case 7:
+                        context.startActivity(new Intent(context.getApplicationContext(), ObjectsActivity.class));
+                        break;
                 }
             }
         });
@@ -127,6 +131,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                         break;
                     case 6:
                         context.startActivity(new Intent(context.getApplicationContext(), ColorsActivity.class));
+                        break;
+                    case 7:
+                        context.startActivity(new Intent(context.getApplicationContext(), ObjectsActivity.class));
                         break;
                 }
             }
