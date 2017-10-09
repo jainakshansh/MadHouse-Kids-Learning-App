@@ -32,9 +32,10 @@
         <activity
             android:name=".VehiclesActivity"
             android:parentActivityName=".LandingActivity" />
-        <activity android:name=".ShapesActivity"></activity>
-        <activity android:name=".ColorsActivity"></activity>
-        <activity android:name=".ObjectsActivity"></activity>
+        <activity android:name=".ShapesActivity" />
+        <activity android:name=".ColorsActivity" />
+        <activity android:name=".ObjectsActivity" />
+        <activity android:name=".SpellingsActivity"></activity>
     </application>
 
 </manifest>

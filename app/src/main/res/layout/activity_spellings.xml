@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_pattern"
-    tools:context=".AnimalsActivity">
+    tools:context="com.madhouseapp.kidslearningapp.SpellingsActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_animals"
+        android:id="@+id/recycler_spellings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/parent_animals"
+        app:layout_constraintBottom_toTopOf="@+id/parent_spellings"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/parent_animals"
+        android:id="@+id/parent_spellings"
         style="?android:attr/buttonBarStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,10 +28,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_animals">
+        app:layout_constraintTop_toBottomOf="@+id/recycler_spellings">
 
         <Button
-            android:id="@+id/previous_animals"
+            android:id="@+id/previous_spellings"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -40,7 +40,7 @@
             android:background="@drawable/left_button" />
 
         <Button
-            android:id="@+id/play_animals"
+            android:id="@+id/play_spellings"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="125dp"
             android:layout_height="125dp"
@@ -48,7 +48,7 @@
             android:background="@drawable/center_button" />
 
         <Button
-            android:id="@+id/next_animals"
+            android:id="@+id/next_spellings"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="75dp"
             android:layout_height="75dp"
