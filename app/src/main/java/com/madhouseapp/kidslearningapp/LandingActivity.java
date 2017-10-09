@@ -59,5 +59,7 @@ public class LandingActivity extends AppCompatActivity {
         categoryItemList.add(new CategoryItem("Fruits", R.drawable.grape));
         categoryItemList.add(new CategoryItem("Vegetables", R.drawable.cauli));
         categoryItemList.add(new CategoryItem("Vehicles", R.drawable.aeroplane));
+        categoryItemList.add(new CategoryItem("Shapes", R.drawable.cube));
+        categoryItemList.add(new CategoryItem("Colors", R.drawable.colors));
     }
 }

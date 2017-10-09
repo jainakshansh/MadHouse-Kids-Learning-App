@@ -3,4 +3,42 @@
     <string name="what_would_you_like_to_learn_today">What would you like to learn today?</string>
     <string name="select">Select</string>
     <string name="presents">PRESENTS</string>
+    <array name="colors">
+        <item>@color/red</item>
+        <item>@color/pink</item>
+        <item>@color/purple</item>
+        <item>@color/indigo</item>
+        <item>@color/blue</item>
+        <item>@color/lightblue</item>
+        <item>@color/cyan</item>
+        <item>@color/teal</item>
+        <item>@color/green</item>
+        <item>@color/lime</item>
+        <item>@color/yellow</item>
+        <item>@color/amber</item>
+        <item>@color/orange</item>
+        <item>@color/brown</item>
+        <item>@color/grey</item>
+        <item>@color/black</item>
+        <item>@color/white</item>
+    </array>
+    <array name="colorNames">
+        <item>RED</item>
+        <item>PINK</item>
+        <item>PURPLE</item>
+        <item>INDIGO</item>
+        <item>BLUE</item>
+        <item>SKY BLUE</item>
+        <item>CYAN</item>
+        <item>TEAL</item>
+        <item>GREEN</item>
+        <item>LIME</item>
+        <item>YELLOW</item>
+        <item>AMBER</item>
+        <item>ORANGE</item>
+        <item>BROWN</item>
+        <item>GREY</item>
+        <item>BLACK</item>
+        <item>WHITE</item>
+    </array>
 </resources>

@@ -14,9 +14,11 @@ import android.widget.TextView;
 
 import com.madhouseapp.kidslearningapp.AlphabetsActivity;
 import com.madhouseapp.kidslearningapp.AnimalsActivity;
+import com.madhouseapp.kidslearningapp.ColorsActivity;
 import com.madhouseapp.kidslearningapp.FruitsActivity;
 import com.madhouseapp.kidslearningapp.Object.CategoryItem;
 import com.madhouseapp.kidslearningapp.R;
+import com.madhouseapp.kidslearningapp.ShapesActivity;
 import com.madhouseapp.kidslearningapp.VegetablesActivity;
 import com.madhouseapp.kidslearningapp.VehiclesActivity;
 import com.squareup.picasso.Picasso;
@@ -66,7 +68,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Picasso.with(context)
                 .load(categoryItem.getCat_image())
                 .into(holder.cat_image);
-        int[] colorArray = {R.color.colorPrimary, R.color.blueGray, R.color.vermillion, R.color.teal};
+        int[] colorArray = {R.color.colorPrimary, R.color.blueGray, R.color.vermillion, R.color.teal, R.color.purple, R.color.lime};
         final int pos = position % colorArray.length;
         holder.cat_button.setBackgroundColor(ContextCompat.getColor(context, colorArray[pos]));
 
@@ -91,6 +93,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                     case 4:
                         context.startActivity(new Intent(context.getApplicationContext(), VehiclesActivity.class));
                         break;
+                    case 5:
+                        context.startActivity(new Intent(context.getApplicationContext(), ShapesActivity.class));
+                        break;
+                    case 6:
+                        context.startActivity(new Intent(context.getApplicationContext(), ColorsActivity.class));
+                        break;
                 }
             }
         });
@@ -113,6 +121,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                         break;
                     case 4:
                         context.startActivity(new Intent(context.getApplicationContext(), VehiclesActivity.class));
+                        break;
+                    case 5:
+                        context.startActivity(new Intent(context.getApplicationContext(), ShapesActivity.class));
+                        break;
+                    case 6:
+                        context.startActivity(new Intent(context.getApplicationContext(), ColorsActivity.class));
                         break;
                 }
             }
