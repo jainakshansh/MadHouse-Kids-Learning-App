@@ -107,10 +107,6 @@ public class ShapesActivity extends AppCompatActivity {
                 }
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
                 mediaPlayer.start();
-
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
-                play.clearAnimation();
-                play.startAnimation(animation);
             }
         });
     }

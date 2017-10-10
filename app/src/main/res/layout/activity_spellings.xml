@@ -37,7 +37,7 @@
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/left_button" />
+            android:background="@drawable/button_previous" />
 
         <Button
             android:id="@+id/play_spellings"
@@ -45,7 +45,7 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_gravity="center"
-            android:background="@drawable/center_button" />
+            android:background="@drawable/button_play" />
 
         <Button
             android:id="@+id/next_spellings"
@@ -54,7 +54,7 @@
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginStart="24dp"
-            android:background="@drawable/right_button" />
+            android:background="@drawable/button_next" />
 
     </LinearLayout>
 
