@@ -15,8 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
@@ -112,10 +110,6 @@ public class SpellingsActivity extends AppCompatActivity {
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
                 mediaPlayer.start();
                 */
-
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
-                play.clearAnimation();
-                play.startAnimation(animation);
 
                 adapter.notifyDataSetChanged();
             }

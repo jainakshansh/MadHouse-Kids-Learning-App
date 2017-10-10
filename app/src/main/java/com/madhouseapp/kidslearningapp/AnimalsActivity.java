@@ -65,10 +65,10 @@ public class AnimalsActivity extends AppCompatActivity {
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != imageItemList.size()-2) {
+                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != imageItemList.size() - 2) {
                     counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
                 } else {
-                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition()+1;
+                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition() + 1;
 
                 }
                 counter--;

@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
+import com.madhouseapp.kidslearningapp.Adapters.ShapesAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.ImageItem;
 
@@ -25,7 +26,7 @@ import java.util.List;
 public class ShapesActivity extends AppCompatActivity {
     private RecyclerView shapesRecycler;
     private List<ImageItem> imageItemList;
-    private ImageAdapter adapter;
+    private ShapesAdapter adapter;
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
@@ -49,7 +50,7 @@ public class ShapesActivity extends AppCompatActivity {
 
         imageItemList = new ArrayList<>();
         initList();
-        adapter = new ImageAdapter(this, imageItemList);
+        adapter = new ShapesAdapter(this, imageItemList);
 
         shapesRecycler = (RecyclerView) findViewById(R.id.recycler_shapes);
         centerZoomLayoutManager = new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);

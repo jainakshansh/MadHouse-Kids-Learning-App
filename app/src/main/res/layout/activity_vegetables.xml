@@ -36,7 +36,7 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/button_previous" />
 
         <Button
@@ -53,7 +53,7 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:background="@drawable/button_next" />
 
     </LinearLayout>
