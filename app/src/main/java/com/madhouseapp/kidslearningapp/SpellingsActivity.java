@@ -1,5 +1,7 @@
 package com.madhouseapp.kidslearningapp;
 
+import android.content.Context;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,15 +10,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
-import com.madhouseapp.kidslearningapp.Adapters.AlphabetAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
+import com.madhouseapp.kidslearningapp.Helper.TypeWriterTextView;
 import com.madhouseapp.kidslearningapp.Object.AlphabetItem;
 
 import java.util.ArrayList;
@@ -26,7 +30,7 @@ public class SpellingsActivity extends AppCompatActivity {
 
     private RecyclerView spellingsRecycler;
     private List<AlphabetItem> alphabetItemList;
-    private AlphabetAdapter adapter;
+    private SpellingAdapter adapter;
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
@@ -47,7 +51,7 @@ public class SpellingsActivity extends AppCompatActivity {
 
         alphabetItemList = new ArrayList<>();
         initList();
-        adapter = new AlphabetAdapter(this, alphabetItemList);
+        adapter = new SpellingAdapter(this, alphabetItemList);
 
         spellingsRecycler = (RecyclerView) findViewById(R.id.recycler_spellings);
         centerZoomLayoutManager = new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -55,9 +59,9 @@ public class SpellingsActivity extends AppCompatActivity {
         spellingsRecycler.setItemAnimator(new DefaultItemAnimator());
         spellingsRecycler.setAdapter(adapter);
 
-        previous = (Button) findViewById(R.id.previous_animals);
-        play = (Button) findViewById(R.id.play_animals);
-        next = (Button) findViewById(R.id.next_animals);
+        previous = (Button) findViewById(R.id.previous_spellings);
+        play = (Button) findViewById(R.id.play_spellings);
+        next = (Button) findViewById(R.id.next_spellings);
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,12 +107,17 @@ public class SpellingsActivity extends AppCompatActivity {
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
+
+                /*
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
                 mediaPlayer.start();
+                */
 
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
                 play.clearAnimation();
                 play.startAnimation(animation);
+
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -123,11 +132,59 @@ public class SpellingsActivity extends AppCompatActivity {
         alphabetItemList.add(new AlphabetItem("Second"));
         alphabetItemList.add(new AlphabetItem("Mummy"));
         alphabetItemList.add(new AlphabetItem("Papa"));
+        alphabetItemList.add(new AlphabetItem("Night"));
+        alphabetItemList.add(new AlphabetItem("Rhyme"));
+        alphabetItemList.add(new AlphabetItem("Story"));
+        alphabetItemList.add(new AlphabetItem("Seven"));
+        alphabetItemList.add(new AlphabetItem("Child"));
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    public class SpellingAdapter extends RecyclerView.Adapter<SpellingAdapter.SpellingViewHolder> {
+
+        private Context context;
+        private List<AlphabetItem> alphabetItemList;
+        private Typeface jellyCrazies;
+
+        public class SpellingViewHolder extends RecyclerView.ViewHolder {
+            private TypeWriterTextView textView;
+
+            public SpellingViewHolder(View view) {
+                super(view);
+                textView = view.findViewById(R.id.spelling_text);
+            }
+        }
+
+        public SpellingAdapter(Context context, List<AlphabetItem> alphabetItemList) {
+            this.context = context;
+            this.alphabetItemList = alphabetItemList;
+            jellyCrazies = Typeface.createFromAsset(context.getAssets(), "fonts/jelly_crazies.ttf");
+        }
+
+        @Override
+        public SpellingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.spelling_item, parent, false);
+            return new SpellingViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(SpellingViewHolder holder, int position) {
+            AlphabetItem item = alphabetItemList.get(position);
+            counter = position;
+            holder.textView.setText("");
+            holder.textView.setTypeface(jellyCrazies);
+            holder.textView.setCharacterDelay(500);
+            holder.textView.displayTextWithAnimation(item.getAlphabet());
+        }
+
+        @Override
+        public int getItemCount() {
+            return alphabetItemList.size();
+        }
     }
 }

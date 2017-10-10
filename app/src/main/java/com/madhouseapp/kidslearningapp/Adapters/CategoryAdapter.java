@@ -20,6 +20,7 @@ import com.madhouseapp.kidslearningapp.Object.CategoryItem;
 import com.madhouseapp.kidslearningapp.ObjectsActivity;
 import com.madhouseapp.kidslearningapp.R;
 import com.madhouseapp.kidslearningapp.ShapesActivity;
+import com.madhouseapp.kidslearningapp.SpellingsActivity;
 import com.madhouseapp.kidslearningapp.VegetablesActivity;
 import com.madhouseapp.kidslearningapp.VehiclesActivity;
 import com.squareup.picasso.Picasso;
@@ -103,6 +104,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                     case 7:
                         context.startActivity(new Intent(context.getApplicationContext(), ObjectsActivity.class));
                         break;
+                    case 8:
+                        context.startActivity(new Intent(context.getApplicationContext(), SpellingsActivity.class));
+                        break;
                 }
             }
         });
@@ -134,6 +138,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                         break;
                     case 7:
                         context.startActivity(new Intent(context.getApplicationContext(), ObjectsActivity.class));
+                        break;
+                    case 8:
+                        context.startActivity(new Intent(context.getApplicationContext(), SpellingsActivity.class));
                         break;
                 }
             }
