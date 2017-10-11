@@ -1,7 +1,5 @@
 package com.madhouseapp.kidslearningapp;
 
-import android.content.Context;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +8,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.madhouseapp.kidslearningapp.Adapters.SpellingAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
-import com.madhouseapp.kidslearningapp.Helper.TypeWriterTextView;
 import com.madhouseapp.kidslearningapp.Object.AlphabetItem;
 
 import java.util.ArrayList;
@@ -48,7 +44,7 @@ public class SpellingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_spellings);
 
         sounds = new int[]{R.raw.first, R.raw.month, R.raw.minute, R.raw.light, R.raw.hello, R.raw.world, R.raw.second,
-                R.raw.mummy, R.raw.papa};
+                R.raw.mummy, R.raw.papa, R.raw.night, R.raw.rhyme, R.raw.story, R.raw.seven, R.raw.child};
 
         alphabetItemList = new ArrayList<>();
         initList();
@@ -64,7 +60,7 @@ public class SpellingsActivity extends AppCompatActivity {
         play = (Button) findViewById(R.id.play_spellings);
         next = (Button) findViewById(R.id.next_spellings);
 
-        counter = Integer.MAX_VALUE/2;
+        counter = Integer.MAX_VALUE / 2;
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,48 +121,5 @@ public class SpellingsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    public class SpellingAdapter extends RecyclerView.Adapter<SpellingAdapter.SpellingViewHolder> {
-
-        private Context context;
-        private List<AlphabetItem> alphabetItemList;
-        private Typeface jellyCrazies;
-
-        public class SpellingViewHolder extends RecyclerView.ViewHolder {
-            private TypeWriterTextView textView;
-
-            public SpellingViewHolder(View view) {
-                super(view);
-                textView = view.findViewById(R.id.spelling_text);
-            }
-        }
-
-        public SpellingAdapter(Context context, List<AlphabetItem> alphabetItemList) {
-            this.context = context;
-            this.alphabetItemList = alphabetItemList;
-            jellyCrazies = Typeface.createFromAsset(context.getAssets(), "fonts/jelly_crazies.ttf");
-        }
-
-        @Override
-        public SpellingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.spelling_item, parent, false);
-            return new SpellingViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(SpellingViewHolder holder, int position) {
-            AlphabetItem item = alphabetItemList.get(position);
-            counter = position;
-            holder.textView.setText("");
-            holder.textView.setTypeface(jellyCrazies);
-            holder.textView.setCharacterDelay(500);
-            holder.textView.displayTextWithAnimation(item.getAlphabet());
-        }
-
-        @Override
-        public int getItemCount() {
-            return alphabetItemList.size();
-        }
     }
 }
