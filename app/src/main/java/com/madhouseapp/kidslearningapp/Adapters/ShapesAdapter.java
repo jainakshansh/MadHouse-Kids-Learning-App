@@ -50,7 +50,9 @@ public class ShapesAdapter extends RecyclerView.Adapter<ShapesAdapter.ShapesView
 
     @Override
     public void onBindViewHolder(ShapesViewHolder holder, int position) {
-        ImageItem imageItem = imageItemList.get(position);
+        int pos = position % imageItemList.size();
+
+        ImageItem imageItem = imageItemList.get(pos);
         holder.name.setTypeface(jellyCrazies);
         holder.name.setText(imageItem.getName());
         Picasso.with(context)
@@ -60,6 +62,6 @@ public class ShapesAdapter extends RecyclerView.Adapter<ShapesAdapter.ShapesView
 
     @Override
     public int getItemCount() {
-        return imageItemList.size();
+        return Integer.MAX_VALUE;
     }
 }

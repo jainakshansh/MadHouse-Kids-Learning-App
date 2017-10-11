@@ -11,8 +11,6 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Adapters.AlphabetAdapter;
@@ -62,22 +60,14 @@ public class AlphabetsActivity extends AppCompatActivity {
         alphabetRecycler.setItemAnimator(new DefaultItemAnimator());
         alphabetRecycler.setAdapter(adapter);
 
+        counter = Integer.MAX_VALUE / 2;
+
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != sounds.length-2) {
-                    counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
-                } else {
-                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition() + 1;
-
-                }
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter--;
-                if (counter < 0) {
-                    counter = alphabetsList.size() - 1;
-                    alphabetRecycler.scrollToPosition(counter);
-                } else {
-                    alphabetRecycler.smoothScrollToPosition(counter);
-                }
+                alphabetRecycler.smoothScrollToPosition(counter);
             }
         });
 
@@ -86,16 +76,11 @@ public class AlphabetsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter++;
-                if (counter > alphabetsList.size() - 1) {
-                    counter = 0;
-                    alphabetRecycler.scrollToPosition(counter);
-                } else {
-                    alphabetRecycler.smoothScrollToPosition(counter);
-                }
+                alphabetRecycler.smoothScrollToPosition(counter);
             }
         });
 
-        alphabetRecycler.smoothScrollToPosition(counter);
+        alphabetRecycler.scrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(alphabetRecycler);
 
@@ -103,10 +88,11 @@ public class AlphabetsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
+                int pos = counter % alphabetsList.size();
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[pos]);
                 mediaPlayer.start();
             }
         });

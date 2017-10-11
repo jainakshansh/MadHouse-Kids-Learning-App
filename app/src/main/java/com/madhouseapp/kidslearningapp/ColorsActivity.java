@@ -53,22 +53,14 @@ public class ColorsActivity extends AppCompatActivity {
         colorRecycler.setItemAnimator(new DefaultItemAnimator());
         colorRecycler.setAdapter(adapter);
 
+        counter = Integer.MAX_VALUE/2;
+
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != colors.length - 2) {
-                    counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
-                } else {
-                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition() + 1;
-
-                }
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter--;
-                if (counter < 0) {
-                    counter = colors.length - 1;
-                    colorRecycler.scrollToPosition(counter);
-                } else {
-                    colorRecycler.smoothScrollToPosition(counter);
-                }
+                colorRecycler.smoothScrollToPosition(counter);
             }
         });
 
@@ -77,16 +69,11 @@ public class ColorsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter++;
-                if (counter > colors.length - 1) {
-                    counter = 0;
-                    colorRecycler.scrollToPosition(counter);
-                } else {
-                    colorRecycler.smoothScrollToPosition(counter);
-                }
+                colorRecycler.smoothScrollToPosition(counter);
             }
         });
 
-        colorRecycler.smoothScrollToPosition(counter);
+        colorRecycler.scrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(colorRecycler);
 
@@ -94,10 +81,11 @@ public class ColorsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
+                int pos = counter % colors.length;
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[pos]);
                 mediaPlayer.start();
             }
         });

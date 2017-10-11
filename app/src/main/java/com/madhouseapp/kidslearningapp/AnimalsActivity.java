@@ -11,8 +11,6 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
@@ -62,22 +60,14 @@ public class AnimalsActivity extends AppCompatActivity {
         play = (Button) findViewById(R.id.play_animals);
         next = (Button) findViewById(R.id.next_animals);
 
+        counter = Integer.MAX_VALUE / 2;
+
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != imageItemList.size() - 2) {
-                    counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
-                } else {
-                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition() + 1;
-
-                }
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter--;
-                if (counter < 0) {
-                    counter = imageItemList.size() - 1;
-                    animalRecycler.scrollToPosition(counter);
-                } else {
-                    animalRecycler.smoothScrollToPosition(counter);
-                }
+                animalRecycler.smoothScrollToPosition(counter);
             }
         });
 
@@ -86,16 +76,11 @@ public class AnimalsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter++;
-                if (counter > imageItemList.size() - 1) {
-                    counter = 0;
-                    animalRecycler.scrollToPosition(counter);
-                } else {
-                    animalRecycler.smoothScrollToPosition(counter);
-                }
+                animalRecycler.smoothScrollToPosition(counter);
             }
         });
 
-        animalRecycler.smoothScrollToPosition(counter);
+        animalRecycler.scrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(animalRecycler);
 
@@ -103,10 +88,11 @@ public class AnimalsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
+                int pos = counter % imageItemList.size();
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[pos]);
                 mediaPlayer.start();
             }
         });

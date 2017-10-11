@@ -62,22 +62,14 @@ public class ShapesActivity extends AppCompatActivity {
         play = (Button) findViewById(R.id.play_shapes);
         next = (Button) findViewById(R.id.next_shapes);
 
+        counter = Integer.MAX_VALUE/2;
+
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != imageItemList.size() - 2) {
-                    counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
-                } else {
-                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition() + 1;
-
-                }
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter--;
-                if (counter < 0) {
-                    counter = imageItemList.size() - 1;
-                    shapesRecycler.scrollToPosition(counter);
-                } else {
-                    shapesRecycler.smoothScrollToPosition(counter);
-                }
+                shapesRecycler.smoothScrollToPosition(counter);
             }
         });
 
@@ -86,16 +78,11 @@ public class ShapesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter++;
-                if (counter > imageItemList.size() - 1) {
-                    counter = 0;
-                    shapesRecycler.scrollToPosition(counter);
-                } else {
-                    shapesRecycler.smoothScrollToPosition(counter);
-                }
+                shapesRecycler.smoothScrollToPosition(counter);
             }
         });
 
-        shapesRecycler.smoothScrollToPosition(counter);
+        shapesRecycler.scrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(shapesRecycler);
 
@@ -103,10 +90,11 @@ public class ShapesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
+                int pos = counter % imageItemList.size();
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[pos]);
                 mediaPlayer.start();
             }
         });

@@ -11,10 +11,7 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
@@ -62,22 +59,15 @@ public class VehiclesActivity extends AppCompatActivity {
         previous = (Button) findViewById(R.id.previous_vehicles);
         play = (Button) findViewById(R.id.play_vehicles);
         next = (Button) findViewById(R.id.next_vehicles);
+
+        counter = Integer.MAX_VALUE / 2;
+
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (centerZoomLayoutManager.findFirstVisibleItemPosition() != imageItemList.size()-2) {
-                    counter = centerZoomLayoutManager.findLastVisibleItemPosition() - 1;
-                } else {
-                    counter = centerZoomLayoutManager.findFirstVisibleItemPosition()+1;
-
-                }
+                counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter--;
-                if (counter < 0) {
-                    counter = imageItemList.size() - 1;
-                    vehiclesRecycler.scrollToPosition(counter);
-                } else {
-                    vehiclesRecycler.smoothScrollToPosition(counter);
-                }
+                vehiclesRecycler.smoothScrollToPosition(counter);
             }
         });
 
@@ -86,16 +76,11 @@ public class VehiclesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter++;
-                if (counter > imageItemList.size() - 1) {
-                    counter = 0;
-                    vehiclesRecycler.scrollToPosition(counter);
-                } else {
-                    vehiclesRecycler.smoothScrollToPosition(counter);
-                }
+                vehiclesRecycler.smoothScrollToPosition(counter);
             }
         });
 
-        vehiclesRecycler.smoothScrollToPosition(counter);
+        vehiclesRecycler.scrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(vehiclesRecycler);
 
@@ -103,10 +88,11 @@ public class VehiclesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
+                int pos = counter % imageItemList.size();
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[counter]);
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), sounds[pos]);
                 mediaPlayer.start();
             }
         });

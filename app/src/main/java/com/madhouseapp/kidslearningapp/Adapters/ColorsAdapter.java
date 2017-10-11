@@ -48,21 +48,23 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewH
 
     @Override
     public void onBindViewHolder(ColorsAdapter.ColorViewHolder holder, int position) {
-        holder.textView.setText(colorNames[position]);
+        int pos = position % colorNames.length;
+
+        holder.textView.setText(colorNames[pos]);
         holder.textView.setTextSize(18);
 
-        if (colorNames[position].equals("WHITE")) {
+        if (colorNames[pos].equals("WHITE")) {
             holder.textView.setTextColor(Color.BLACK);
         } else {
             holder.textView.setTextColor(Color.WHITE);
         }
-        holder.cardView.setBackgroundColor(colors[position]);
+        holder.cardView.setBackgroundColor(colors[pos]);
         holder.textView.setTypeface(jellyCrazies);
     }
 
     @Override
     public int getItemCount() {
-        return colors.length;
+        return Integer.MAX_VALUE;
     }
 
 

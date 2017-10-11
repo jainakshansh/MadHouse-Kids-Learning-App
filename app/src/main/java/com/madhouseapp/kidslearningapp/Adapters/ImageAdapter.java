@@ -50,12 +50,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
-        ImageItem imageItem = imageItemList.get(position);
-        /*
-        if (position == 0 || position == imageItemList.size()) {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
-        }
-        */
+        int pos = position % imageItemList.size();
+
+        ImageItem imageItem = imageItemList.get(pos);
         holder.name.setTypeface(jellyCrazies);
         holder.name.setText(imageItem.getName());
         Picasso.with(context)
@@ -65,6 +62,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public int getItemCount() {
-        return imageItemList.size();
+        return Integer.MAX_VALUE;
     }
 }

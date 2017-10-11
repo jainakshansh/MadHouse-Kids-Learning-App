@@ -46,13 +46,15 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.Alphab
 
     @Override
     public void onBindViewHolder(AlphabetViewHolder holder, int position) {
-        AlphabetItem item = alphabetItemList.get(position);
+        int pos = position % alphabetItemList.size();
+
+        AlphabetItem item = alphabetItemList.get(pos);
         holder.textView.setText(item.getAlphabet());
         holder.textView.setTypeface(chalkDuster);
     }
 
     @Override
     public int getItemCount() {
-        return alphabetItemList.size();
+        return Integer.MAX_VALUE;
     }
 }
