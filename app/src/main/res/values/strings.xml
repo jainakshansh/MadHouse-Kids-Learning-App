@@ -4,6 +4,8 @@
     <string name="select">Select</string>
     <string name="presents">PRESENTS</string>
     <string name="ad_id">ca-app-pub-9399213409638993/5720031203</string>
+    <string name="kids_learning">Kids Learning</string>
+    <string name="from">From</string>
     <array name="colors">
         <item>@color/red</item>
         <item>@color/pink</item>

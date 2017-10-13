@@ -5,6 +5,5 @@
         android:fromAlpha="1.0"
         android:toAlpha="0.1"
         android:duration="750"
-        android:repeatCount="1"
         android:repeatMode="reverse" />
 </set>
