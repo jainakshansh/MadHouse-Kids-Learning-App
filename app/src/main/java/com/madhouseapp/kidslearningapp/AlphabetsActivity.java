@@ -45,9 +45,9 @@ public class AlphabetsActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_alphabets);
 
-        sounds = new int[]{R.raw.a, R.raw.b, R.raw.c, R.raw.d, R.raw.e, R.raw.f, R.raw.g, R.raw.h, R.raw.i, R.raw.j, R.raw.k,
-                R.raw.l, R.raw.m, R.raw.n, R.raw.o, R.raw.p, R.raw.q, R.raw.r, R.raw.s, R.raw.t, R.raw.u, R.raw.v, R.raw.w,
-                R.raw.x, R.raw.y, R.raw.z};
+        sounds = new int[]{R.raw.p, R.raw.q, R.raw.r, R.raw.s, R.raw.t, R.raw.u, R.raw.v, R.raw.w,
+                R.raw.x, R.raw.y, R.raw.z, R.raw.a, R.raw.b, R.raw.c, R.raw.d, R.raw.e, R.raw.f, R.raw.g, R.raw.h, R.raw.i, R.raw.j, R.raw.k,
+                R.raw.l, R.raw.m, R.raw.n, R.raw.o};
 
         adView = (AdView) findViewById(R.id.alphabet_ad);
         AdRequest adRequest = new AdRequest.Builder()
