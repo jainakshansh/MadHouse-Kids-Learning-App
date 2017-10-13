@@ -80,7 +80,6 @@ public class ColorsActivity extends AppCompatActivity {
             }
         });
 
-        colorRecycler.scrollToPosition(counter);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(colorRecycler);
 

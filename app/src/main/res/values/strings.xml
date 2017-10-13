@@ -3,6 +3,7 @@
     <string name="what_would_you_like_to_learn_today">What would you like to learn today?</string>
     <string name="select">Select</string>
     <string name="presents">PRESENTS</string>
+    <string name="ad_id">ca-app-pub-9399213409638993/5720031203</string>
     <array name="colors">
         <item>@color/red</item>
         <item>@color/pink</item>
@@ -41,4 +42,5 @@
         <item>BLACK</item>
         <item>WHITE</item>
     </array>
+
 </resources>
