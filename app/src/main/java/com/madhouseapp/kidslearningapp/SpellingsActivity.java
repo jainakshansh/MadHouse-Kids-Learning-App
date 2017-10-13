@@ -13,6 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.SpellingAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.AlphabetItem;
@@ -31,6 +33,8 @@ public class SpellingsActivity extends AppCompatActivity {
     private Button previous, play, next;
     private int counter = 0;
 
+    private AdView adView;
+
     private MediaPlayer mediaPlayer;
     private int[] sounds;
 
@@ -45,7 +49,11 @@ public class SpellingsActivity extends AppCompatActivity {
 
         sounds = new int[]{R.raw.first, R.raw.month, R.raw.minute, R.raw.light, R.raw.hello, R.raw.world, R.raw.second,
                 R.raw.mummy, R.raw.papa, R.raw.night, R.raw.rhyme, R.raw.story, R.raw.seven, R.raw.child};
-
+        adView = (AdView) findViewById(R.id.spellings_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
         alphabetItemList = new ArrayList<>();
         initList();
         adapter = new SpellingAdapter(this, alphabetItemList);

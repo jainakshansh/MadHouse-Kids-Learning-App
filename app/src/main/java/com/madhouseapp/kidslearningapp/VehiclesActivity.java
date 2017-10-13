@@ -13,6 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.ImageItem;
@@ -25,6 +27,8 @@ public class VehiclesActivity extends AppCompatActivity {
     private RecyclerView vehiclesRecycler;
     private List<ImageItem> imageItemList;
     private ImageAdapter adapter;
+
+    private AdView adView;
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
@@ -43,6 +47,11 @@ public class VehiclesActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_vehicles);
 
+        adView = (AdView) findViewById(R.id.vehicles_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
         sounds = new int[]{R.raw.aeroplane, R.raw.autorickshaw, R.raw.cab, R.raw.camping_car, R.raw.car, R.raw.caravan, R.raw.cargotruck,
                 R.raw.dliveryvan, R.raw.hotairbaloon, R.raw.icecreamtruck, R.raw.motorcycle, R.raw.scooter, R.raw.ship, R.raw.speedboat, R.raw.truck};
 

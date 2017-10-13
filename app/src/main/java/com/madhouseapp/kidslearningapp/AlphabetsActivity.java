@@ -13,6 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.AlphabetAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.AlphabetItem;
@@ -26,6 +28,7 @@ public class AlphabetsActivity extends AppCompatActivity {
     private RecyclerView alphabetRecycler;
     private AlphabetAdapter adapter;
     private CenterZoomLayoutManager centerZoomLayoutManager;
+    private AdView adView;
 
     private Button previous, play, next;
     private int counter = 0;
@@ -45,6 +48,12 @@ public class AlphabetsActivity extends AppCompatActivity {
         sounds = new int[]{R.raw.a, R.raw.b, R.raw.c, R.raw.d, R.raw.e, R.raw.f, R.raw.g, R.raw.h, R.raw.i, R.raw.j, R.raw.k,
                 R.raw.l, R.raw.m, R.raw.n, R.raw.o, R.raw.p, R.raw.q, R.raw.r, R.raw.s, R.raw.t, R.raw.u, R.raw.v, R.raw.w,
                 R.raw.x, R.raw.y, R.raw.z};
+
+        adView = (AdView) findViewById(R.id.alphabet_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
 
         alphabetsList = new ArrayList<>();
         initList();
@@ -99,6 +108,18 @@ public class AlphabetsActivity extends AppCompatActivity {
     }
 
     private void initList() {
+
+        alphabetsList.add(new AlphabetItem("P p"));
+        alphabetsList.add(new AlphabetItem("Q q"));
+        alphabetsList.add(new AlphabetItem("R r"));
+        alphabetsList.add(new AlphabetItem("S s"));
+        alphabetsList.add(new AlphabetItem("T t"));
+        alphabetsList.add(new AlphabetItem("U u"));
+        alphabetsList.add(new AlphabetItem("V v"));
+        alphabetsList.add(new AlphabetItem("W w"));
+        alphabetsList.add(new AlphabetItem("X x"));
+        alphabetsList.add(new AlphabetItem("Y y"));
+        alphabetsList.add(new AlphabetItem("Z z"));
         alphabetsList.add(new AlphabetItem("A a"));
         alphabetsList.add(new AlphabetItem("B b"));
         alphabetsList.add(new AlphabetItem("C c"));
@@ -114,22 +135,35 @@ public class AlphabetsActivity extends AppCompatActivity {
         alphabetsList.add(new AlphabetItem("M m"));
         alphabetsList.add(new AlphabetItem("N n"));
         alphabetsList.add(new AlphabetItem("O o"));
-        alphabetsList.add(new AlphabetItem("P p"));
-        alphabetsList.add(new AlphabetItem("Q q"));
-        alphabetsList.add(new AlphabetItem("R r"));
-        alphabetsList.add(new AlphabetItem("S s"));
-        alphabetsList.add(new AlphabetItem("T t"));
-        alphabetsList.add(new AlphabetItem("U u"));
-        alphabetsList.add(new AlphabetItem("V v"));
-        alphabetsList.add(new AlphabetItem("W w"));
-        alphabetsList.add(new AlphabetItem("X x"));
-        alphabetsList.add(new AlphabetItem("Y y"));
-        alphabetsList.add(new AlphabetItem("Z z"));
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 }

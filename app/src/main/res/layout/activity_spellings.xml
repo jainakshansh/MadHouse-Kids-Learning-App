@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_pattern"
@@ -15,7 +18,7 @@
         app:layout_constraintBottom_toTopOf="@+id/parent_spellings"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:id="@+id/parent_spellings"
@@ -37,7 +40,7 @@
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/button_previous" />
+            android:background="@drawable/button_previous"/>
 
         <Button
             android:id="@+id/play_spellings"
@@ -45,7 +48,7 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_gravity="center"
-            android:background="@drawable/button_play" />
+            android:background="@drawable/button_play"/>
 
         <Button
             android:id="@+id/next_spellings"
@@ -54,8 +57,20 @@
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
-            android:background="@drawable/button_next" />
+            android:background="@drawable/button_next"/>
 
     </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/spellings_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        ads:layout_constraintLeft_toLeftOf="parent"
+        ads:layout_constraintRight_toRightOf="parent"
+        ads:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.gms.ads.AdView>
 
 </android.support.constraint.ConstraintLayout>

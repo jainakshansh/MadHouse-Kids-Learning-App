@@ -11,10 +11,10 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.ImageItem;
@@ -30,6 +30,8 @@ public class ObjectsActivity extends AppCompatActivity {
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
+    private AdView adView;
+
     private Button previous, play, next;
     private int counter = 0;
 
@@ -44,6 +46,12 @@ public class ObjectsActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_objects);
+
+        adView = (AdView) findViewById(R.id.objects_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
 
         sounds = new int[]{R.raw.air_conditioner, R.raw.briefcase, R.raw.bucket, R.raw.clock, R.raw.cricket_bat, R.raw.cricket_ball,
                 R.raw.chair, R.raw.pencil, R.raw.fan, R.raw.ladder, R.raw.laptop, R.raw.pen, R.raw.scissor, R.raw.smartphone,
@@ -63,7 +71,7 @@ public class ObjectsActivity extends AppCompatActivity {
         play = (Button) findViewById(R.id.play_objects);
         next = (Button) findViewById(R.id.next_objects);
 
-        counter = Integer.MAX_VALUE/2;
+        counter = Integer.MAX_VALUE / 2;
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override

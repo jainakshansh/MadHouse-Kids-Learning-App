@@ -11,10 +11,10 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.ImageItem;
@@ -27,6 +27,8 @@ public class FruitsActivity extends AppCompatActivity {
     private RecyclerView fruitsRecycler;
     private List<ImageItem> imageItemList;
     private ImageAdapter adapter;
+
+    private AdView adView;
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
 
@@ -48,6 +50,11 @@ public class FruitsActivity extends AppCompatActivity {
         sounds = new int[]{R.raw.banana, R.raw.cherry, R.raw.coconut, R.raw.fig, R.raw.grape, R.raw.green_apple, R.raw.kiwi,
                 R.raw.papaya, R.raw.peach, R.raw.pineapple, R.raw.pomegranate, R.raw.strawberry, R.raw.watermelon};
 
+        adView = (AdView) findViewById(R.id.fruits_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
         imageItemList = new ArrayList<>();
         initList();
         adapter = new ImageAdapter(this, imageItemList);
@@ -62,7 +69,7 @@ public class FruitsActivity extends AppCompatActivity {
         play = (Button) findViewById(R.id.play_fruits);
         next = (Button) findViewById(R.id.next_fruits);
 
-        counter = Integer.MAX_VALUE/2;
+        counter = Integer.MAX_VALUE / 2;
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override

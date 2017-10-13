@@ -13,6 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.ImageItem;
@@ -27,6 +29,8 @@ public class AnimalsActivity extends AppCompatActivity {
     private ImageAdapter adapter;
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
+
+    private AdView adView;
 
     private Button previous, play, next;
     private int counter = 0;
@@ -46,9 +50,14 @@ public class AnimalsActivity extends AppCompatActivity {
         sounds = new int[]{R.raw.alligator, R.raw.bear, R.raw.elephant, R.raw.lion, R.raw.monkey, R.raw.panda, R.raw.rabbit,
                 R.raw.snake, R.raw.squirrel, R.raw.tiger, R.raw.zebra};
 
+        adView = (AdView) findViewById(R.id.animals_ad);
         imageItemList = new ArrayList<>();
         initList();
         adapter = new ImageAdapter(this, imageItemList);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
 
         animalRecycler = (RecyclerView) findViewById(R.id.recycler_animals);
         centerZoomLayoutManager = new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -116,5 +125,29 @@ public class AnimalsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 }

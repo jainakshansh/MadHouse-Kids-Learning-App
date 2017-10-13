@@ -11,10 +11,10 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.ImageItem;
@@ -29,6 +29,8 @@ public class VegetablesActivity extends AppCompatActivity {
     private ImageAdapter adapter;
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
+
+    private AdView adView;
 
     private Button previous, play, next;
     private int counter = 0;
@@ -51,6 +53,12 @@ public class VegetablesActivity extends AppCompatActivity {
                 R.raw.onion, R.raw.parsley, R.raw.peppers, R.raw.potatoe, R.raw.radish, R.raw.red_cabbage, R.raw.squash,
                 R.raw.tomatoe, R.raw.zuchinni};
 
+        adView = (AdView) findViewById(R.id.vegetables_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
+
         imageItemList = new ArrayList<>();
         initList();
         adapter = new ImageAdapter(this, imageItemList);
@@ -65,7 +73,7 @@ public class VegetablesActivity extends AppCompatActivity {
         play = (Button) findViewById(R.id.play_vegetables);
         next = (Button) findViewById(R.id.next_vegetables);
 
-        counter = Integer.MAX_VALUE/2;
+        counter = Integer.MAX_VALUE / 2;
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override

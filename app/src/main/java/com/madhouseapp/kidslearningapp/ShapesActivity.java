@@ -11,11 +11,10 @@ import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
-import com.madhouseapp.kidslearningapp.Adapters.ImageAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.madhouseapp.kidslearningapp.Adapters.ShapesAdapter;
 import com.madhouseapp.kidslearningapp.Helper.CenterZoomLayoutManager;
 import com.madhouseapp.kidslearningapp.Object.ImageItem;
@@ -29,6 +28,8 @@ public class ShapesActivity extends AppCompatActivity {
     private ShapesAdapter adapter;
 
     private CenterZoomLayoutManager centerZoomLayoutManager;
+
+    private AdView adView;
 
     private Button previous, play, next;
     private int counter = 0;
@@ -48,6 +49,12 @@ public class ShapesActivity extends AppCompatActivity {
         sounds = new int[]{R.raw.circle, R.raw.triangle, R.raw.oval, R.raw.square, R.raw.rectangle, R.raw.hexagon,
                 R.raw.pentagon, R.raw.diamond, R.raw.cylinder, R.raw.cube, R.raw.pyramid, R.raw.cone};
 
+        adView = (AdView) findViewById(R.id.shapes_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .tagForChildDirectedTreatment(true)
+                .build();
+        adView.loadAd(adRequest);
+
         imageItemList = new ArrayList<>();
         initList();
         adapter = new ShapesAdapter(this, imageItemList);
@@ -62,7 +69,7 @@ public class ShapesActivity extends AppCompatActivity {
         play = (Button) findViewById(R.id.play_shapes);
         next = (Button) findViewById(R.id.next_shapes);
 
-        counter = Integer.MAX_VALUE/2;
+        counter = Integer.MAX_VALUE / 2;
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
