@@ -3,14 +3,18 @@ package com.madhouseapp.kidslearningapp.Adapters;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.madhouseapp.kidslearningapp.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Hemant on 10/9/2017.
@@ -18,25 +22,28 @@ import com.madhouseapp.kidslearningapp.R;
 
 public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewHolder> {
     private Context context;
-    private int[] colors;
-    private String[] colorNames;
+    private List<Integer> colorsList = new ArrayList<>();
+    private List<String> colorNames = new ArrayList<>();
     private Typeface jellyCrazies;
 
     public class ColorViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
-        private CardView cardView;
+        private LinearLayout linearLayout;
 
         public ColorViewHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.alphabet_text);
-            cardView = itemView.findViewById(R.id.alphabet_card);
+            linearLayout = itemView.findViewById(R.id.colors_layout);
         }
     }
 
     public ColorsAdapter(Context context) {
         this.context = context;
-        colors = context.getResources().getIntArray(R.array.colors);
-        colorNames = context.getResources().getStringArray(R.array.colorNames);
+        int[] colors = context.getResources().getIntArray(R.array.colors);
+        for (int i = 0; i < colors.length; i++) {
+            colorsList.add(colors[i]);
+        }
+        colorNames = Arrays.asList(context.getResources().getStringArray(R.array.colorNames));
         jellyCrazies = Typeface.createFromAsset(context.getAssets(), "fonts/jelly_crazies.ttf");
     }
 
@@ -48,17 +55,17 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewH
 
     @Override
     public void onBindViewHolder(ColorsAdapter.ColorViewHolder holder, int position) {
-        int pos = position % colorNames.length;
+        int pos = position % colorNames.size();
 
-        holder.textView.setText(colorNames[pos]);
+        holder.textView.setText(colorNames.get(pos));
         holder.textView.setTextSize(18);
 
-        if (colorNames[pos].equals("WHITE")) {
+        if (colorNames.get(pos).equals("WHITE")) {
             holder.textView.setTextColor(Color.BLACK);
         } else {
             holder.textView.setTextColor(Color.WHITE);
         }
-        holder.cardView.setBackgroundColor(colors[pos]);
+        holder.linearLayout.setBackgroundColor(colorsList.get(pos));
         holder.textView.setTypeface(jellyCrazies);
     }
 
