@@ -67,6 +67,10 @@ public class ColorsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter = centerZoomLayoutManager.findLastCompletelyVisibleItemPosition();
                 counter--;
+                if (counter < 0) {
+                    counter = colors.length - 1;
+                    colorRecycler.scrollToPosition(counter);
+                }
                 colorRecycler.smoothScrollToPosition(counter);
             }
         });
