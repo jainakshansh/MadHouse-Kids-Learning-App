@@ -46,8 +46,8 @@ public class ShapesActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_shapes);
 
-        sounds = new int[]{R.raw.circle, R.raw.triangle, R.raw.oval, R.raw.square, R.raw.rectangle, R.raw.hexagon,
-                R.raw.pentagon, R.raw.diamond, R.raw.cylinder, R.raw.cube, R.raw.pyramid, R.raw.cone};
+        sounds = new int[]{R.raw.circle, R.raw.triangle, R.raw.sphere, R.raw.square, R.raw.rectangle, R.raw.hexagon,
+                R.raw.pentagon, R.raw.cylinder, R.raw.cube, R.raw.pyramid, R.raw.cone};
 
         adView = (AdView) findViewById(R.id.shapes_ad);
         AdRequest adRequest = new AdRequest.Builder()
@@ -110,12 +110,11 @@ public class ShapesActivity extends AppCompatActivity {
     private void initList() {
         imageItemList.add(new ImageItem("Circle", R.drawable.circle));
         imageItemList.add(new ImageItem("Triangle", R.drawable.triangle));
-        imageItemList.add(new ImageItem("Oval", R.drawable.oval));
+        imageItemList.add(new ImageItem("Sphere", R.drawable.sphere));
         imageItemList.add(new ImageItem("Square", R.drawable.square));
         imageItemList.add(new ImageItem("Rectangle", R.drawable.rectangle));
         imageItemList.add(new ImageItem("Hexagon", R.drawable.hexagon));
         imageItemList.add(new ImageItem("Pentagon", R.drawable.pentagon));
-        imageItemList.add(new ImageItem("Diamond", R.drawable.diamond));
         imageItemList.add(new ImageItem("Cylinder", R.drawable.cylinder));
         imageItemList.add(new ImageItem("Cube", R.drawable.cube));
         imageItemList.add(new ImageItem("Pyramid", R.drawable.pyramid));
