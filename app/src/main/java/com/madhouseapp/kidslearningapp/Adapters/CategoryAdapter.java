@@ -70,7 +70,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Picasso.with(context)
                 .load(categoryItem.getCat_image())
                 .into(holder.cat_image);
-        int[] colorArray = {R.color.colorPrimary, R.color.blueGray, R.color.vermillion, R.color.teal, R.color.purple, R.color.lime};
+        int[] colorArray = {R.color.colorPrimary, R.color.lime, R.color.purple, R.color.teal, R.color.lightblue, R.color.brown};
         final int pos = position % colorArray.length;
         holder.cat_button.setBackgroundColor(ContextCompat.getColor(context, colorArray[pos]));
 

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MadHouse-Kids-Learning-App.iml" filepath="$PROJECT_DIR$/MadHouse-Kids-Learning-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KidsLearningApp.iml" filepath="$PROJECT_DIR$/KidsLearningApp.iml" />
+      <module fileurl="file://C:\Users\Akshansh\AndroidStudioProjects\KidsLearningApp\MadHouse-Kids-Learning-App.iml" filepath="C:\Users\Akshansh\AndroidStudioProjects\KidsLearningApp\MadHouse-Kids-Learning-App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

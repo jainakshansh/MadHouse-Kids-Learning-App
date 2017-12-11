@@ -10,7 +10,7 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <com.madhouseapp.kidslearningapp.Helper.TypeWriterTextView
+    <TextView
         android:id="@+id/spelling_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
