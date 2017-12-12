@@ -47,8 +47,8 @@ public class SpellingsActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_spellings);
 
-        sounds = new int[]{R.raw.first, R.raw.month, R.raw.minute, R.raw.light, R.raw.hello, R.raw.world, R.raw.second,
-                R.raw.mummy, R.raw.papa, R.raw.night, R.raw.rhyme, R.raw.story, R.raw.seven, R.raw.child};
+        sounds = new int[]{R.raw.all, R.raw.bat, R.raw.cat, R.raw.dad, R.raw.dog, R.raw.hen, R.raw.hello,
+                R.raw.mom, R.raw.one, R.raw.papa, R.raw.pet, R.raw.rat, R.raw.sun, R.raw.toy, R.raw.yes};
         adView = (AdView) findViewById(R.id.spellings_ad);
         AdRequest adRequest = new AdRequest.Builder()
                 .tagForChildDirectedTreatment(true)
@@ -109,20 +109,21 @@ public class SpellingsActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        alphabetItemList.add(new AlphabetItem("First"));
-        alphabetItemList.add(new AlphabetItem("Month"));
-        alphabetItemList.add(new AlphabetItem("Minute"));
-        alphabetItemList.add(new AlphabetItem("Light"));
+        alphabetItemList.add(new AlphabetItem("All"));
+        alphabetItemList.add(new AlphabetItem("Bat"));
+        alphabetItemList.add(new AlphabetItem("Cat"));
+        alphabetItemList.add(new AlphabetItem("Dad"));
+        alphabetItemList.add(new AlphabetItem("Dog"));
+        alphabetItemList.add(new AlphabetItem("Hen"));
         alphabetItemList.add(new AlphabetItem("Hello"));
-        alphabetItemList.add(new AlphabetItem("World"));
-        alphabetItemList.add(new AlphabetItem("Second"));
-        alphabetItemList.add(new AlphabetItem("Mummy"));
+        alphabetItemList.add(new AlphabetItem("Mom"));
+        alphabetItemList.add(new AlphabetItem("One"));
         alphabetItemList.add(new AlphabetItem("Papa"));
-        alphabetItemList.add(new AlphabetItem("Night"));
-        alphabetItemList.add(new AlphabetItem("Rhyme"));
-        alphabetItemList.add(new AlphabetItem("Story"));
-        alphabetItemList.add(new AlphabetItem("Seven"));
-        alphabetItemList.add(new AlphabetItem("Child"));
+        alphabetItemList.add(new AlphabetItem("Pet"));
+        alphabetItemList.add(new AlphabetItem("Rat"));
+        alphabetItemList.add(new AlphabetItem("Sun"));
+        alphabetItemList.add(new AlphabetItem("Toy"));
+        alphabetItemList.add(new AlphabetItem("Yes"));
     }
 
     @Override
