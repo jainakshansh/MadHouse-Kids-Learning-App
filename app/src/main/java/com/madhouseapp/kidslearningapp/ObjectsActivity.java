@@ -115,9 +115,9 @@ public class ObjectsActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Bucket", R.drawable.bucket));
         imageItemList.add(new ImageItem("Clock", R.drawable.clock));
         imageItemList.add(new ImageItem("Cricket Bat", R.drawable.cricket_bat));
-        imageItemList.add(new ImageItem("Cricket Ball", R.drawable.cricket));
-        imageItemList.add(new ImageItem("Chair", R.drawable.desk_chair));
-        imageItemList.add(new ImageItem("Pencil", R.drawable.edit));
+        imageItemList.add(new ImageItem("Cricket Ball", R.drawable.cricket_ball));
+        imageItemList.add(new ImageItem("Chair", R.drawable.chair));
+        imageItemList.add(new ImageItem("Pencil", R.drawable.pencil));
         imageItemList.add(new ImageItem("Fan", R.drawable.fan));
         imageItemList.add(new ImageItem("Ladder", R.drawable.ladder));
         imageItemList.add(new ImageItem("Laptop", R.drawable.laptop));
@@ -125,7 +125,6 @@ public class ObjectsActivity extends AppCompatActivity {
         imageItemList.add(new ImageItem("Scissors", R.drawable.scissors));
         imageItemList.add(new ImageItem("SmartPhone", R.drawable.smartphone));
         imageItemList.add(new ImageItem("Toothbrush", R.drawable.toothbrush));
-        imageItemList.add(new ImageItem("Uchiwa", R.drawable.uchiwa));
     }
 
     @Override
