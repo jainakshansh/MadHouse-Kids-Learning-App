@@ -11,6 +11,8 @@
     <string name="hey_we_are_so_glad_you_are_loving_our_app_we_would_love_your_rating_so_it_can_help_others_make_a_great_choice">Hey! We are so glad you are loving our app. We would love your rating so it can help others make a great choice.</string>
     <string name="no_thanks">No, thanks</string>
     <string name="sure">Sure</string>
+    <string name="mad">MAD</string>
+    <string name="house">HOUSE</string>
     <array name="colors">
         <item>@color/red</item>
         <item>@color/pink</item>

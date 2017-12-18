@@ -35,24 +35,40 @@
         android:textAllCaps="true"
         android:textColor="@android:color/black"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/splash_logo"
+        app:layout_constraintBottom_toTopOf="@+id/mad_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_splash"
         app:layout_constraintVertical_chainStyle="spread" />
 
-    <ImageView
-        android:id="@+id/splash_logo"
+    <TextView
+        android:id="@+id/mad_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/madhouse_logo"
+        android:text="@string/mad"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintRight_toLeftOf="@+id/house_logo"
+        app:layout_constraintTop_toBottomOf="@id/text_from_splash" />
+
+    <TextView
+        android:id="@+id/house_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/house"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/mad_logo"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_from_splash"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/text_from_splash" />
 
     <LinearLayout
         android:id="@+id/ll_splash"

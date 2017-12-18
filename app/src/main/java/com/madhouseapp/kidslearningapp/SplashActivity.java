@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private ImageView madhouseLogo;
+    private TextView madLogo, houseLogo;
     private TextView kidsLearning, from;
     private ImageView image1, image2, image3;
     private ConstraintLayout parent;
@@ -31,7 +31,8 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        madhouseLogo = (ImageView) findViewById(R.id.splash_logo);
+        madLogo = (TextView) findViewById(R.id.mad_logo);
+        houseLogo = (TextView) findViewById(R.id.house_logo);
         kidsLearning = (TextView) findViewById(R.id.text_kids_learning);
         from = (TextView) findViewById(R.id.text_from_splash);
         image1 = (ImageView) findViewById(R.id.splash_image1);
@@ -42,6 +43,11 @@ public class SplashActivity extends AppCompatActivity {
         Typeface edo = Typeface.createFromAsset(getAssets(), "fonts/edosz.ttf");
         kidsLearning.setTypeface(edo);
         from.setTypeface(edo);
+
+        Typeface poppins_light = Typeface.createFromAsset(getAssets(), "fonts/poppins_extralight.ttf");
+        madLogo.setTypeface(poppins_light);
+        Typeface poppins_semi = Typeface.createFromAsset(getAssets(), "fonts/poppins_semibold.ttf");
+        houseLogo.setTypeface(poppins_semi);
 
         Animation zoom0 = AnimationUtils.loadAnimation(this, R.anim.zoom_in);
         Animation zoom1 = AnimationUtils.loadAnimation(this, R.anim.zoom1);
@@ -71,8 +77,10 @@ public class SplashActivity extends AppCompatActivity {
         from.startAnimation(zoom4);
 
         zoom5.reset();
-        madhouseLogo.clearAnimation();
-        madhouseLogo.startAnimation(zoom5);
+        madLogo.clearAnimation();
+        houseLogo.clearAnimation();
+        madLogo.startAnimation(zoom5);
+        houseLogo.startAnimation(zoom5);
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
